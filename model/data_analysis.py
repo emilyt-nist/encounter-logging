@@ -72,9 +72,15 @@ def plot_rssi(t, rssi):
     ax_histy.tick_params(direction='in', labelleft=False)
 
     ax_scatter.plot(t, rssi,'.',  markersize=1)
-
+    ax_scatter.set_xlabel(r'time bin', fontsize=15)
+    ax_scatter.set_ylabel(r'RSSI', fontsize=15)
+    ax_scatter.set_title('strength of RSSI signal')
+                 
     ax_histy.barh(hist[:,0], hist[:,1])
     ax_histy.set_ylim(ax_scatter.get_ylim())
+    ax_histy.set_title('histogram of RSSI counts')
+    ax_histy.set_xlabel('counts')
+   # ax_histy.set_ylabel('RSSI')
     return fig
 
 # Plotly check all data plot

@@ -212,7 +212,8 @@ def plot_roc_curve_custom(fpr, tpr, rssi50, rssi60, WINDOW_SIZE, REQUIRED_READIN
     plt.show()
 
 # plot the roc curve
-def plot_roc_curve_save(fpr, tpr, rssi50, rssi60, WINDOW_SIZE, REQUIRED_READINGS,output_filename):
+def plot_roc_curve_return_fig(fpr, tpr, rssi50, rssi60, WINDOW_SIZE, REQUIRED_READINGS):
+    fig = plt.figure()
     plt.plot(fpr, tpr, 'co', label='ROC')
     plt.plot([0, 1], [0, 1], color='grey', linestyle='--')
     plt.plot(fpr[rssi60],tpr[rssi60],'ro', label='RSSI 60')
@@ -222,7 +223,9 @@ def plot_roc_curve_save(fpr, tpr, rssi50, rssi60, WINDOW_SIZE, REQUIRED_READINGS
     plt.title('MofN ROC: M=' + str(REQUIRED_READINGS) + ', N=' + str(WINDOW_SIZE))
     plt.legend()
     plt.show()
-    plt.savefig(output_filename)
+    return fig
+    
+   # plt.savefig(output_filename)
     
 #functions
 def get_unique(df):
